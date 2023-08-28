@@ -1,5 +1,6 @@
 package tacos;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import lombok.Data;
@@ -16,5 +17,9 @@ public class Taco {
     private String name;
     @NotNull
     @Size(min=1, message = "You must choose at least 1 ingredient")
-    private List<Ingredient> ingredients;
+    private List<IngredientRef> ingredients = new ArrayList<>();
+
+    public void addIngredient(Ingredient taco){
+        this.ingredients.add(new IngredientRef(taco.getId()));
+    }
 }
